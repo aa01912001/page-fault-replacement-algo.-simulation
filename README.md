@@ -5,7 +5,7 @@
 
 **Locality:** 首先決定出function數量(程式中設為100)，來表示該process當中呼叫了100個fucntions，每一個function都有自己的一段reference string(程式中每一function之reference string length為[1900, 2100]中的隨機數字)。產生一個function之reference string之方法為挑選一隨機數(範圍為[1, 800]，假設為a)，在選擇出該function可參考到的subset of string(範圍可為[1/15, 1/25]中一數乘上800，程式中為800/15)，故該function可產生之reference string為[a, a+(800/15)-1]之隨機數。
 
-**我的reference string(continuity):** 方法機乎同上Locality，差別在於function可產生之reference string為[a, (800/7)-1]之連續數(a, a+1, a+2, … , (800/7)-1)。目的在於模擬function可能執行column-major的陣列存取，並執行寫入之I/O動作。
+**我的reference string(continuity):** 方法機乎同上Locality，差別在於function可產生之reference string為[a, a+(800/7)-1]之連續數(a, a+1, a+2, … , a+(800/7)-1)。目的在於模擬function可能執行column-major的陣列存取，並執行寫入之I/O動作。
 
 ## algorithms:
 **FIFO:** 透過先進先出的方式來挑選victim page，但可能出現Belady’s anomaly現象，也就是process分配的frames增加後，page fault發生了不減反升的結果。
